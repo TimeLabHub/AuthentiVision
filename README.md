@@ -38,6 +38,7 @@
 </tr>
 </table>
 </div>
+
 ## 🌟 Features
 
 - High accuracy in distinguishing real faces from AI-generated ones
