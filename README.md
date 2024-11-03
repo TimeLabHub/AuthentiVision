@@ -45,7 +45,6 @@
 - Multiple feature extraction techniques for robust detection
 - Easy-to-use API for quick integration
 - Lightweight and efficient inference
-- Comprehensive documentation and examples
 
 ## 🚀 Quick Start
 
