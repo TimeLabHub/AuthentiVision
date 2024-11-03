@@ -7,7 +7,7 @@
 
 **State-of-the-art Face Authentication for Detecting AI-Generated Images**
 
-[Huggingface](https://medium.com/@haijian06/authentivision-detecting-ai-generated-faces) | [Data](https://huggingface.co/datasets/haijian06/face-auth-dataset) | [Demo](https://huggingface.co/spaces/haijian06/AuthentiVision) | [Technical Paper](https://arxiv.org/abs/xxx)
+[Huggingface](https://medium.com/@haijian06/authentivision-detecting-ai-generated-faces) | [Data](https://huggingface.co/datasets/haijian06/face-auth-dataset) | [Demo](https://huggingface.co/spaces/haijian06/TrueFace) | [Technical Paper](https://timelabhub.github.io/)
 
 </div>
 </div>
