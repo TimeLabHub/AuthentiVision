@@ -52,7 +52,7 @@
 ```bash
 git clone https://github.com/TimeLabHub/AuthentiVision.git
 cd AuthentiVision
-pip install -e .
+pip install -r requirements.txt
 ```
 
 ```python
