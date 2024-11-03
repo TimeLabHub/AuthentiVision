@@ -49,7 +49,7 @@
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/haijian06/AuthentiVision
+git clone https://github.com/TimeLabHub/AuthentiVision.git
 cd AuthentiVision
 pip install -e .
 ```
