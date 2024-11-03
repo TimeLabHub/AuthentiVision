@@ -22,7 +22,7 @@
 </tr>
 <tr>
 <td>
-<img src="assets/real_face_.jpg" alt="Real Face" width="200"/>
+<img src="assets/real_face.jpg" alt="Real Face" width="220"/>
 </td>
 <td>
 <img src="assets/ai_face.jpg" alt="AI-Generated Face" width="200"/>
@@ -30,7 +30,7 @@
 </tr>
 <tr>
 <td>
-<img src="assets/real_face_2.jpg" alt="Real Face" width="200"/>
+<img src="assets/real_face_2.jpg" alt="Real Face" width="220"/>
 </td>
 <td>
 <img src="assets/ai_face_2.jpg" alt="AI-Generated Face" width="200"/>
