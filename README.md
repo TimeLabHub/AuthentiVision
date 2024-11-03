@@ -5,7 +5,7 @@
 <img src="assets/img_1.jpg" alt="Logo" width="300"/>
 
 
-**State-of-the-art Face Authentication for Detecting AI-Generated Images**
+**State-of-the-art Face Authentication Model for Detecting AI-Generated Images**
 
 [Huggingface](https://medium.com/@haijian06/authentivision-detecting-ai-generated-faces) | [Data](https://huggingface.co/datasets/haijian06/face-auth-dataset) | [Demo](https://huggingface.co/spaces/haijian06/TrueFace) | [Tech Blog](https://timelabhub.github.io/)
 
