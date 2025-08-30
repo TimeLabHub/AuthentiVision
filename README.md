@@ -54,17 +54,22 @@ cd AuthentiVision
 pip install -r requirements.txt
 ```
 
-```python
-from authentivision import AuthentiVision
-
-# Initialize detector
-detector = AuthentiVision()
-
-# Make prediction
-label, confidence = detector.predict("path_to_image.jpg")
-print(f"Prediction: {label} (Confidence: {confidence:.2f})")
+```bash
+python predict.py --input-path /path/to/some/face.jpg
+or
+python predict.py --input-path /path/to/a/folder_with_faces/
+or
+python predict.py --input-path /path/to/face.jpg --model-path /path/to/another_model.pth
 ```
 
+Run prediction (simple wrapper script method):
+
+1.Edit run_prediction.py and change the target_path variable.
+
+2.Run the script:
+```python
+python run_prediction.py
+```
 
 ## 📚 Documentation
 
