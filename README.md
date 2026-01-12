@@ -53,6 +53,11 @@ git clone https://github.com/TimeLabHub/AuthentiVision.git
 cd AuthentiVision
 pip install -r requirements.txt
 ```
+Download MFID dataset
+```bash
+wget https://1829447704.v.123pan.cn/1829447704/PaperData/MFID.zip
+unzip MFID.zip
+```
 
 ```bash
 python predict.py --input-path /path/to/some/face.jpg
