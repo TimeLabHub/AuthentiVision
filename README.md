@@ -53,10 +53,46 @@ git clone https://github.com/TimeLabHub/AuthentiVision.git
 cd AuthentiVision
 pip install -r authentivision/requirements.txt
 ```
-Download MFID dataset
+
+> **Note for Server Environments**: If you are running on a server without a display (e.g., Linux terminal), you may need to install the headless version of OpenCV to avoid `libGL` errors:
+> ```bash
+> pip uninstall opencv-python
+> pip install opencv-python-headless==4.8.1.78
+> ```
+
+Download the pretrained model:
+```bash
+wget -O best_model.pth https://1829447704.v.123pan.cn/1829447704/PaperData/model/best_model.pth
+```
+
+Download MFID dataset (Optional, only for training)
 ```bash
 wget https://1829447704.v.123pan.cn/1829447704/PaperData/MFID.zip
 unzip MFID.zip -d AuthentiVision_Dataset
+```
+
+## 🔮 Prediction
+
+We provide a high-accuracy pretrained model (`best_model.pth`) in the project root, which achieves **>99% accuracy** on the MFID test set. Please ensure you have downloaded it as described in the [Quick Start](#-quick-start) section.
+
+To run prediction using this model:
+
+```bash
+cd authentivision
+# Predict a single image
+python predict.py --input-path /path/to/face.jpg --model-path ../best_model.pth
+
+# Predict a folder of images
+python predict.py --input-path /path/to/folder/ --model-path ../best_model.pth
+```
+
+Run prediction (simple wrapper script method):
+
+1.Edit `run_prediction.py` and change the `target_path` variable.
+
+2.Run the script:
+```bash
+python run_prediction.py
 ```
 
 ## 🏋️ Training
@@ -93,33 +129,6 @@ To train the model from scratch using the MFID dataset:
    - The best model will be saved as `best_model.pth`.
    - TensorBoard logs will be saved in `runs/advanced_face_detection`.
    - Test set details will be saved to `test_dataset.txt`.
-
-## 🔮 Prediction
-
-We provide a high-accuracy pretrained model (`best_model.pth`)('wget https://1829447704.v.123pan.cn/1829447704/PaperData/model/best_model.pth') in the project root, which achieves **>99% accuracy** on the MFID test set.
-
-To run prediction using this model:
-
-```bash
-cd authentivision
-# Predict a single image (uses 8_1_1.pth automatically if best_model.pth is missing)
-python predict.py --input-path /path/to/face.jpg
-
-# Predict a folder of images
-python predict.py --input-path /path/to/folder/
-
-# Explicitly specify the model path
-python predict.py --input-path /path/to/face.jpg --model-path ../8_1_1.pth
-```
-
-Run prediction (simple wrapper script method):
-
-1.Edit run_prediction.py and change the target_path variable.
-
-2.Run the script:
-```python
-python run_prediction.py
-```
 
 ## 📚 Documentation
 
