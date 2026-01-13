@@ -96,7 +96,7 @@ To train the model from scratch using the MFID dataset:
 
 ## 🔮 Prediction
 
-We provide a high-accuracy pretrained model (`8_1_1.pth`) in the project root, which achieves **>99% accuracy** on the MFID test set.
+We provide a high-accuracy pretrained model (`best_model.pth`)('wget https://1829447704.v.123pan.cn/1829447704/PaperData/model/best_model.pth') in the project root, which achieves **>99% accuracy** on the MFID test set.
 
 To run prediction using this model:
 
