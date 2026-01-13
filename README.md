@@ -51,20 +51,65 @@
 ```bash
 git clone https://github.com/TimeLabHub/AuthentiVision.git
 cd AuthentiVision
-pip install -r requirements.txt
+pip install -r authentivision/requirements.txt
 ```
 Download MFID dataset
 ```bash
 wget https://1829447704.v.123pan.cn/1829447704/PaperData/MFID.zip
-unzip MFID.zip
+unzip MFID.zip -d AuthentiVision_Dataset
 ```
 
+## 🏋️ Training
+
+To train the model from scratch using the MFID dataset:
+
+1. **Prepare the Dataset**: Ensure you have downloaded and extracted the MFID dataset. The structure should be:
+   ```
+   AuthentiVision_Dataset/
+   ├── real_images/
+   └── ai_generated/
+   ```
+
+2. **Run Training**:
+   You can run the training script with default settings:
+   ```bash
+   cd authentivision
+   python train.py
+   ```
+
+   Or specify the dataset path and training parameters:
+   ```bash
+   python train.py --dataset_root /path/to/AuthentiVision_Dataset --epochs 100 --batch_size 32
+   ```
+
+   **Parameters:**
+   - `--dataset_root`: Root directory of the dataset. Default: `../AuthentiVision_Dataset`
+   - `--epochs`: Number of training epochs. Default: 100
+   - `--batch_size`: Batch size for training. Default: 32
+
+   > **Note on Pretrained Models**: The script attempts to download ImageNet pretrained weights for `tf_efficientnetv2_b2` from HuggingFace. If network access is restricted, you can manually download the `model.safetensors` file (e.g., from HuggingFace Hub) and place it in the project root directory. The script will automatically detect and load it if online download fails.
+
+3. **Output**:
+   - The best model will be saved as `best_model.pth`.
+   - TensorBoard logs will be saved in `runs/advanced_face_detection`.
+   - Test set details will be saved to `test_dataset.txt`.
+
+## 🔮 Prediction
+
+We provide a high-accuracy pretrained model (`8_1_1.pth`) in the project root, which achieves **>99% accuracy** on the MFID test set.
+
+To run prediction using this model:
+
 ```bash
-python predict.py --input-path /path/to/some/face.jpg
-or
-python predict.py --input-path /path/to/a/folder_with_faces/
-or
-python predict.py --input-path /path/to/face.jpg --model-path /path/to/another_model.pth
+cd authentivision
+# Predict a single image (uses 8_1_1.pth automatically if best_model.pth is missing)
+python predict.py --input-path /path/to/face.jpg
+
+# Predict a folder of images
+python predict.py --input-path /path/to/folder/
+
+# Explicitly specify the model path
+python predict.py --input-path /path/to/face.jpg --model-path ../8_1_1.pth
 ```
 
 Run prediction (simple wrapper script method):
@@ -89,6 +134,71 @@ For detailed documentation, please visit our [tech blog](https://timelabhub.gith
 ## 📄 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## 📦 Third-Party Datasets and Licenses
+
+This project makes use of several publicly available datasets. Below we list the datasets and their corresponding licenses for transparency and compliance.
+
+### 1️⃣ FFHQ (Flickr-Faces-HQ)
+
+* **Used for**: Real face images in MFID dataset
+* **Provider**: NVIDIA
+* **Official URL**: [https://github.com/NVlabs/ffhq-dataset](https://github.com/NVlabs/ffhq-dataset)
+* **License**: **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
+
+**Notes**:
+* The dataset is intended for **non-commercial research use only**
+* Attribution is required
+* Redistribution of modified versions should preserve the license
+
+**License URL**: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+
+### 2️⃣ CelebA-HQ
+
+* **Provider**: MMLAB, CUHK
+* **License**: **Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)**
+
+**Notes**:
+* Non-commercial research use only
+* Face images of celebrities
+
+### 3️⃣ HumanFlux1.1
+
+* **Used for**: Cross-dataset generalization evaluation
+* **Provider**: krishnakalyan (Hugging Face)
+* **Dataset URL**: [https://huggingface.co/datasets/krishnakalyan3/flux-1.1-v2](https://huggingface.co/datasets/krishnakalyan3/flux-1.1-v2)
+* **License**: As specified by the dataset provider (research use).
+
+**Important**:
+* At the time of writing, HumanFlux1.1 is released for **research purposes**.
+* Please refer to the original dataset card on Hugging Face for the most up-to-date license terms.
+
+### 4️⃣ Rapidata Non-Face Dataset (FLUX1.1)
+
+* **Used for**: Non-face generalization experiments
+* **Provider**: Rapidata
+* **Dataset URL**: [https://huggingface.co/datasets/Rapidata/117k_human_alignment_flux1.0_V_flux1.1Blueberry](https://huggingface.co/datasets/Rapidata/117k_human_alignment_flux1.0_V_flux1.1Blueberry)
+* **License**: Released by Rapidata for research purposes. Please refer to the original dataset page for detailed license terms.
+
+### 5️⃣ AI-Generated Images (StyleGAN, ProGAN, EG3D, Stable Diffusion, Midjourney, FLUX, etc.)
+
+* **Used for**: Synthetic images in MFID
+* **Generated by**: Public generative models
+* **License considerations**:
+  * Generated images follow the **terms of the corresponding generation models**
+  * Used **strictly for academic research and benchmarking**
+  * No commercial redistribution intended
+
+**Statement**:
+All AI-generated images are used solely for academic research and benchmarking purposes, in accordance with the usage policies of the respective generative models.
+
+### ⚠️ Academic Use Disclaimer
+
+The models and code provided in this repository are for **academic research and educational purposes only**. 
+- The `MFID` dataset contains images from various sources with specific licensing terms (e.g., CC BY-NC 4.0).
+- Users are responsible for ensuring their use of the data and models complies with the original licenses of the source datasets.
+- Commercial use of the datasets or models trained on them may be restricted by the original providers.
+
 ## 🌟 Acknowledgments
 
 - Thanks to all contributors and researchers in the field
